@@ -3,7 +3,7 @@ const Task = require("../model/Task")
 const { auth } = require("./Auth")
 const router = express.Router()
 const User = require("../model/User")
-router.get('/getalltasks',auth,async(req,res)=>{
+router.get('https://task-manager-production-82fd.vercel.app/getalltasks',auth,async(req,res)=>{
     try {
         const {email} =req.dataofuser ;
 
@@ -17,7 +17,7 @@ router.get('/getalltasks',auth,async(req,res)=>{
 })
 
 
-router.get('/gettaskbyid/:id',auth,async(req,res)=>{
+router.get('https://task-manager-production-82fd.vercel.app/gettaskbyid/:id',auth,async(req,res)=>{
     try {
         const task = await Task.findById(req.params.id)
         res.json(task)
@@ -27,7 +27,7 @@ router.get('/gettaskbyid/:id',auth,async(req,res)=>{
 })
 
 
-router.post('/addtask', auth ,async (req, res) => {
+router.post('https://task-manager-production-82fd.vercel.app/addtask', auth ,async (req, res) => {
     try {
         const { title, description } = req.body;
         const {email} = req.dataofuser;
@@ -46,7 +46,7 @@ router.post('/addtask', auth ,async (req, res) => {
 });
 
 
-router.put('/updatetask/:id',auth,async(req,res)=>{
+router.put('https://task-manager-production-82fd.vercel.app/updatetask/:id',auth,async(req,res)=>{
     try {
         const {email} = req.dataofuser;
         const id = req.params.id;
@@ -62,7 +62,7 @@ router.put('/updatetask/:id',auth,async(req,res)=>{
     }
 })
   
-router.delete('/deletetask/:id',auth,async(req,res)=>{
+router.delete('https://task-manager-production-82fd.vercel.app/deletetask/:id',auth,async(req,res)=>{
     try {
         await Task.findByIdAndDelete(req.params.id)
         res.json({message:'Task deleted'})

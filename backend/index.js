@@ -10,7 +10,7 @@ const app = express()
 ConnectDb()
 
 app.use(cors({
-    origin:'http://localhost:5173',
+    origin:['https://task-manager-production-82fd.vercel.app'],
     credentials:true
 }))
 app.use(express.json())

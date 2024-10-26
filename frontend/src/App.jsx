@@ -25,13 +25,13 @@ const [newdata,setnewdata] = useState({ntitle:"",ndescription:""})
   
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/api/tasks/getalltasks',{withCredentials:true})
+    axios.get('https://task-manager-production-henna.vercel.app/api/tasks/getalltasks',{withCredentials:true})
     .then(response=>setTasks(response.data))
     .catch(error=>console.error(error))
   },[])
   
   const addTask=()=>{
-    axios.post('http://localhost:5000/api/tasks/addtask',{title:data.title,description:data.description},{withCredentials:true})
+    axios.post('https://task-manager-production-henna.vercel.app/api/tasks/addtask',{title:data.title,description:data.description},{withCredentials:true})
     .then(response=>{
       setTasks([...tasks,response.data])
     setdata({title:"",description:""})
@@ -45,7 +45,7 @@ const [newdata,setnewdata] = useState({ntitle:"",ndescription:""})
     console.log(id);
 
     axios.put(
-        `http://localhost:5000/api/tasks/updatetask/${id}`, 
+        `task-manager-production-six.vercel.app/api/tasks/updatetask/${id}`, 
         { title: newdata.ntitle, description: newdata.ndescription },
         { withCredentials: true }
     )
@@ -63,7 +63,7 @@ const [newdata,setnewdata] = useState({ntitle:"",ndescription:""})
 
 
   const deleteTask=(id)=>{
-    axios.delete(`http://localhost:5000/api/tasks/deletetask/${id}`,{withCredentials:true})
+    axios.delete(`task-manager-production-six.vercel.app/api/tasks/deletetask/${id}`,{withCredentials:true})
     .then(()=>setTasks(tasks.filter(task=>task._id !== id)))
     .catch(error=>console.error(error))
   }
